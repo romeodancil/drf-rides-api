@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "f1abf6a2-b97b-496d-b220-5cc4946c89b2",
+		"name": "wingz-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2012617"
+	},
+	"item": [
+		{
+			"name": "User API",
+			"item": [
+				{
+					"name": "GetUsers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token f5a446aee5156562eefb1e8d3cf4fb520bc0547f",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateAdminUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"test\",\n    \"last_name\": \"admin\",\n    \"email\": \"test@admin.com\",\n    \"phone_number\": \"2132131313\",\n    \"role\": \"admin\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test1@test1.com\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/token/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNormalUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"test\",\n    \"last_name\": \"user\",\n    \"email\": \"test@user.com\",\n    \"phone_number\": \"2132131313\",\n    \"role\": \"user\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ride API",
+			"item": []
+		}
+	]
+}
