@@ -58,12 +58,14 @@ class RideModel(models.Model):
     id_rider = models.ForeignKey(
         UserModel,
         on_delete=models.CASCADE,
-        related_name="rider"
+        related_name="rides_as_rider"
     )
     id_driver = models.ForeignKey(
         UserModel,
         on_delete=models.CASCADE,
-        related_name="driver"
+        related_name="rides_as_driver",
+        null=True,
+        blank=True
     )
     pickup_latitude = models.FloatField()
     pickup_longitude = models.FloatField()

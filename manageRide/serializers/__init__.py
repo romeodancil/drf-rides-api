@@ -1,1 +1,2 @@
-from manageRide.serializers.userSerializes import *
+from manageRide.serializers.userSerializers import *
+from manageRide.serializers.rideSerializers import *

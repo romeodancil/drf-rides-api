@@ -4,7 +4,7 @@ from manageRide.models import UserModel
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
-        fields = ['role', 'first_name', 'last_name', 'email', 'phone_number']
+        fields = ['id_user', 'role', 'first_name', 'last_name', 'email', 'phone_number']
     
     def create(self, validated_data):
         if validated_data['role'].lower() == 'admin':
