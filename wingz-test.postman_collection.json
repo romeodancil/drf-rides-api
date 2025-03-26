@@ -71,6 +71,18 @@
 				},
 				{
 					"name": "Generate Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody)",
+									"pm.environment.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -82,7 +94,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"test1@test1.com\"\n}"
+							"raw": "{\n    \"email\": \"test@admin.com\"\n}"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/api/token/",
@@ -123,7 +135,172 @@
 		},
 		{
 			"name": "Ride API",
-			"item": []
+			"item": [
+				{
+					"name": "ridesListAPIrequest",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "headerPrefix",
+									"value": "Token",
+									"type": "string"
+								},
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ride?page=1&page_size=5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ride"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bookARideRequest",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "headerPrefix",
+									"value": "Token",
+									"type": "string"
+								},
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"pickup\",\n    \"pickup_latitude\": \"123445\", \n    \"pickup_longitude\": \"1212121\",\n    \"dropoff_latitude\": \"2131313\",\n    \"dropoff_longitude\": \"122212\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ride",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ride"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateRideRequest",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "headerPrefix",
+									"value": "Token",
+									"type": "string"
+								},
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ride_id\": 1,\n    \"id_driver\": 1,\n    \"pickup_time\": \"2025-03-25T14:30:00Z\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ride",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ride"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rideEvents",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "createRideEvents",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
